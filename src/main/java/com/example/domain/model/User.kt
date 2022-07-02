@@ -12,7 +12,7 @@ import javax.validation.constraints.NotBlank
 import javax.validation.constraints.NotNull
 import javax.validation.constraints.Pattern
 import javax.validation.constraints.Size
-@Entity(name = "Users")
+@Entity(name = "t_users")
 @RegisterForReflection
 open class User(
     @Id
