@@ -1,5 +1,6 @@
 package com.example.domain.model
 
+import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntityBase
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
@@ -18,9 +19,11 @@ open class Grade(
 
     open var description: String = "",
 
+    open var value: Byte = 0,
+
     @OneToOne
     open var subject: Subject = Subject(),
 
     @ManyToOne
-    open var owner: User = User(),
+    open var studentId: User = User(),
 )

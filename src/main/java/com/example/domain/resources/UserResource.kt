@@ -41,12 +41,12 @@ class UserResource(
     @PermitAll
     fun login(
         @Valid @NotNull userLoginRequest: UserLoginRequest
-    ): Response = Response.ok(service.login(userLoginRequest)).status(Response.Status.OK).build()
+    ): Response = ok(service.login(userLoginRequest)).status(Response.Status.OK).build()
 
 
     @GET
     @Path("user")
-    @RolesAllowed(Role.USER)
+    @PermitAll
     fun getUser(
         @Context securityContext: SecurityContext
     ): Response = ok(service.get(securityContext.userPrincipal.name)).build()

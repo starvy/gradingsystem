@@ -6,7 +6,7 @@ import io.quarkus.panache.common.Parameters.with
 import javax.enterprise.context.ApplicationScoped
 
 @ApplicationScoped
-class UserRepository : PanacheRepositoryBase<User, String> {
+class UserRepository : PanacheRepositoryBase<User, Long> {
     fun findByEmail(email: String): User? =
         find("upper(email)", email.toUpperCase().trim()).firstResult()
 

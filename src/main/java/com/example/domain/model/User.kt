@@ -2,6 +2,7 @@ package com.example.domain.model
 
 import com.example.infrastructure.ValidationMessages.USERNAME_MUST_MATCH_PATTERN
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntity
+import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntityBase
 import io.quarkus.runtime.annotations.RegisterForReflection
 import javax.persistence.Column
 import javax.persistence.Entity
