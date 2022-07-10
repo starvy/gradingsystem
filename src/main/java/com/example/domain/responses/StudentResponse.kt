@@ -16,8 +16,8 @@ data class StudentResponse(
     @JsonProperty
     val fullName: String,
 
-    @JsonProperty
-    val grades: List<Grade>,
+    @JsonProperty // TODO myb list grades
+    val grades: List<GradeResponse>,
 
 ) {
     companion object {
@@ -26,7 +26,9 @@ data class StudentResponse(
             name = user.username,
             email = user.email,
             fullName = user.fullName,
-            grades = user.grades,
+            grades = user.grades.map {
+                GradeResponse.build(it)
+            }
         )
     }
 }
