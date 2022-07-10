@@ -1,5 +1,4 @@
-alter table if exists t_grades drop constraint if exists FKrjj9bbla62kwk06dcdgmxjt0h;
-alter table if exists t_grades drop constraint if exists FKqgid0d6nv6xp9tgi2k4w05urp;
+alter table if exists t_grades drop constraint if exists FKjlfutrdmwjp6wfn7housavsk7;
 drop table if exists t_grades cascade;
 drop table if exists t_subjects cascade;
 drop table if exists t_users cascade;

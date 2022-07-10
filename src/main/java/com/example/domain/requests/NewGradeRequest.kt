@@ -22,7 +22,7 @@ data class NewGradeRequest(
 ) {
     fun toEntity() = Grade(
         title = title,
-        studentId = User(),
+        student = User(),
         value = value
     )
 }

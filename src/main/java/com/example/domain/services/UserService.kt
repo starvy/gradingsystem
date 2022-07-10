@@ -17,7 +17,7 @@ class UserService(
     private val hashProvider: BCryptHashProvider,
 ) {
     fun get(username: String): UserResponse = repository.findByUsername(username)?.run {
-        UserResponse.build(this, tokenProvider.create(username))
+        UserResponse.build(this, tokenProvider.create(username, role))
     } ?: throw UserNotFoundException()
 
     fun register(newUser: UserRegistrationRequest): UserResponse = newUser.run {
@@ -35,7 +35,7 @@ class UserService(
 
     fun login(userLoginRequest: UserLoginRequest) = repository.findByEmail(userLoginRequest.email)?.run {
         if (!hashProvider.verify(userLoginRequest.password, password)) throw InvalidPasswordException()
-        else UserResponse.build(this, tokenProvider.create(username))
+        else UserResponse.build(this, tokenProvider.create(username, role))
     } ?: throw UnregisteredEmailException()
 
     /*fun update(loggedInUserId: String, updateRequest: UserUpdateRequest): UserResponse = repository
