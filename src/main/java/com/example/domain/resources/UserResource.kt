@@ -3,11 +3,8 @@ package com.example.domain.resources
 import com.example.domain.requests.UserLoginRequest
 import com.example.domain.requests.UserRegistrationRequest
 import com.example.domain.services.UserService
-import com.example.infrastructure.security.Role
-import org.eclipse.microprofile.jwt.JsonWebToken
+import io.quarkus.security.Authenticated
 import javax.annotation.security.PermitAll
-import javax.annotation.security.RolesAllowed
-import javax.inject.Inject
 import javax.transaction.Transactional
 import javax.validation.Valid
 import javax.validation.constraints.NotNull
@@ -46,7 +43,7 @@ class UserResource(
 
     @GET
     @Path("user")
-    @PermitAll
+    @Authenticated
     fun getUser(
         @Context securityContext: SecurityContext
     ): Response = ok(service.get(securityContext.userPrincipal.name)).build()
