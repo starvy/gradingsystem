@@ -2,7 +2,9 @@ package com.example.domain.resources
 
 import com.example.domain.requests.GetStudentRequest
 import com.example.domain.services.StudentService
+import com.example.domain.services.UserService
 import com.example.infrastructure.security.Role
+import java.util.stream.Collectors
 import javax.annotation.security.PermitAll
 import javax.annotation.security.RolesAllowed
 import javax.ws.rs.Consumes
@@ -21,7 +23,6 @@ class StudentResource (
 ) {
     @GET
     @Path("student")
-//    @RolesAllowed(Role.TEACHER, Role.ADMIN, Role.SUPERADMIN) // TODO roles as seperate table with Many To Many relationship with User
-    @PermitAll
+    @RolesAllowed(Role.TEACHER, Role.ADMIN, Role.SUPERADMIN) // TODO roles as seperate table with Many To Many relationship with User
     fun getStudent(request: GetStudentRequest): Response = ok(studentService.get(request)).build()
 }
