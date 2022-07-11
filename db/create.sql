@@ -7,3 +7,11 @@ alter table if exists t_users add constraint UK_sp0e01od15gf4nu5ffu87qb9n unique
 alter table if exists t_grades add constraint FKjlfutrdmwjp6wfn7housavsk7 foreign key (student_id) references t_users;
 INSERT INTO public.t_users (id, email, fullname, password, role, username) VALUES (1, 'debil@gmail.com', '', '$2a$05$Jrq2TDwLUIPFo5Yda8G8neJrd1DdtDjOJjnaRcI9aJ132QUGOLesK', 'USER', 'debil');
 INSERT INTO public.t_users (id, email, fullname, password, role, username) VALUES (2, 'blatny@blatny.cz', 'Honza', '$2a$12$mlEnv1aMgHvafYCNOBG4N.KUYTS.SLFZtYfnXedUPmJfgeyIlsBKu', 'SUPERADMIN', 'superadmin');
+INSERT INTO public.t_grades (id, description, title, value, student_id) VALUES (1, '', 'ahoj', 2, 1);
+INSERT INTO public.t_grades (id, description, title, value, student_id) VALUES (1, '', 'ahoj', 2, 1);
+INSERT INTO public.t_grades (id, description, title, value, student_id) VALUES (1, '', 'ahoj', 2, 1);
+INSERT INTO public.t_grades (id, description, title, value, student_id) VALUES (1, '', 'ahoj', 2, 1);
+INSERT INTO public.t_grades (id, description, title, value, student_id) VALUES (1, '', 'ahoj', 2, 1);
+INSERT INTO public.t_grades (id, description, title, value, student_id) VALUES (1, '', 'ahoj', 2, 1);
+INSERT INTO public.t_grades (id, description, title, value, student_id) VALUES (1, '', 'ahoj', 2, 1);
+INSERT INTO public.t_grades (id, description, title, value, student_id) VALUES (1, '', 'ahoj', 2, 1);
