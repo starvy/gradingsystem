@@ -1,7 +1,6 @@
 package com.example.domain.services
 
 import com.example.domain.*
-import com.example.domain.model.User
 import com.example.domain.repositories.UserRepository
 import com.example.domain.requests.UserLoginRequest
 import com.example.domain.requests.UserRegistrationRequest
@@ -17,7 +16,7 @@ class UserService(
     private val hashProvider: BCryptHashProvider,
 ) {
     fun get(username: String): UserResponse = repository.findByUsername(username)?.run {
-        UserResponse.build(this, tokenProvider.create(username, role))
+        UserResponse.build(this, tokenProvider.create(username, role)) // TODO maybe don't return the token
     } ?: throw UserNotFoundException()
 
     fun register(newUser: UserRegistrationRequest): UserResponse = newUser.run {

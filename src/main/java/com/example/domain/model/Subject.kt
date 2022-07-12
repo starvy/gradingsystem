@@ -1,9 +1,6 @@
 package com.example.domain.model
 
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity(name = "t_subjects")
 open class Subject(
@@ -12,5 +9,8 @@ open class Subject(
     var id: Long = 0,
 
     @Column(nullable = false)
-    var name: String = "",
+    open var name: String = "",
+
+    @OneToOne
+    open var grade: Grade? = null,
 )

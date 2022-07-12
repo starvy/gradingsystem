@@ -1,15 +1,7 @@
 package com.example.domain.model
 
 import io.quarkus.runtime.annotations.RegisterForReflection
-import org.hibernate.annotations.Cascade
-import org.hibernate.annotations.CascadeType
-import javax.persistence.Column
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.Id
-import javax.persistence.JoinColumn
-import javax.persistence.ManyToOne
-import javax.persistence.OneToOne
+import javax.persistence.*
 
 @Entity(name = "t_grades")
 @RegisterForReflection
@@ -25,8 +17,8 @@ open class Grade(
 
     open var value: Byte = 0,
 
-    /*@OneToOne
-    open var subject: Subject = Subject(),*/
+    @OneToOne
+    open var subject: Subject? = null,
 
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = true)
