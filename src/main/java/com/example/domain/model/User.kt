@@ -2,15 +2,12 @@ package com.example.domain.model
 
 import com.example.infrastructure.ValidationMessages.USERNAME_MUST_MATCH_PATTERN
 import com.example.infrastructure.security.Role
-import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntity
-import io.quarkus.hibernate.orm.panache.kotlin.PanacheEntityBase
 import io.quarkus.runtime.annotations.RegisterForReflection
 import javax.persistence.*
 import javax.validation.constraints.Email
 import javax.validation.constraints.NotBlank
-import javax.validation.constraints.NotNull
 import javax.validation.constraints.Pattern
-import javax.validation.constraints.Size
+
 @Entity(name = "t_users")
 @RegisterForReflection
 open class User(
@@ -36,8 +33,13 @@ open class User(
 
     open var fullName: String = "",
 
+    @ManyToMany
+    @JoinTable(name = "t_users_groups"/*,
+        joinColumns = { @JoinColumn(name = "user_id") },
+        inverseJoinColumns = { @JoinColumn}*/)
+    open var groups: MutableList<Group> = mutableListOf(),
+
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "student")
     open var grades: MutableList<Grade> = mutableListOf(),
-
-    )
+)
 
