@@ -1,4 +1,10 @@
 # gradingsystem Project
+App is now hosted on https://anti-bakalari.herokuapp.com/
+
+OpenAPI spec is in openapi.json; it is possible to import to postman but because openAPI is stupid, it doesn't generate JsonRootName, so it has to be manually added :(
+
+Postman collections to be added
+
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
