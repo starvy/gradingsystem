@@ -7,3 +7,5 @@ class EmailAlreadyExistsException : RuntimeException("Email is already registere
 class UserNotFoundException : RuntimeException("User not found")
 class InvalidPasswordException : ForbiddenException("Invalid password")
 class UnregisteredEmailException : RuntimeException("Email is not registered to any user")
+
+class UserIsInGroup : java.lang.RuntimeException("User is already in that group")

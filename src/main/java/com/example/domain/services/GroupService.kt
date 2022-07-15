@@ -1,8 +1,10 @@
 package com.example.domain.services
 
+import com.example.domain.UserIsInGroup
 import com.example.domain.UserNotFoundException
 import com.example.domain.repositories.GroupRepository
 import com.example.domain.repositories.UserRepository
+import com.example.domain.requests.GroupUpdateRequest
 import com.example.domain.requests.NewGroupRequest
 import javax.enterprise.context.ApplicationScoped
 
@@ -24,5 +26,18 @@ class GroupService(
         groupRepository.persist(group)
     }
 
-//    fun addUsersToExisting()
+    fun updateGroup(groupRequest: GroupUpdateRequest) = groupRequest.run {
+        val group = groupRepository.findById(groupId)!!
+        userIdsToAdd.forEach { id ->
+            userRepository.findById(id)!!.also {
+                if (!userRepository.isInGroup(group, it)) { // Don't add user if is already in that group
+                    it.groups.add(group)
+                    group.users.add(it)
+                    groupRepository.persist(group)
+                } else {
+                    throw UserIsInGroup()
+                }
+            }
+        }
+    }
 }

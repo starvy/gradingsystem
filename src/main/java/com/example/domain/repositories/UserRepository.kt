@@ -1,5 +1,6 @@
 package com.example.domain.repositories
 
+import com.example.domain.model.Group
 import com.example.domain.model.User
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheRepositoryBase
 import io.quarkus.panache.common.Parameters.with
@@ -22,4 +23,6 @@ class UserRepository : PanacheRepositoryBase<User, Long> {
         query = "upper(email) = :subjectedUserEmail",
         params = with("subjectedUserEmail", subjectedUserEmail.toUpperCase().trim())
     ) > 0
+
+    fun isInGroup(group: Group, user: User): Boolean = user.groups.contains(group)
 }
