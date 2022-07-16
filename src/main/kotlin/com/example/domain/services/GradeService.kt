@@ -1,12 +1,9 @@
 package com.example.domain.services
 
-import com.example.domain.model.Grade
 import com.example.domain.repositories.GradeRepository
 import com.example.domain.repositories.UserRepository
 import com.example.domain.requests.NewGradeRequest
 import com.example.domain.responses.GradeResponse
-import com.example.domain.responses.UserResponse
-import com.example.infrastructure.security.Role
 import javax.enterprise.context.ApplicationScoped
 
 @ApplicationScoped

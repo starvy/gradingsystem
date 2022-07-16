@@ -1,6 +1,5 @@
 package com.example.domain.resources
 
-import com.example.domain.model.Grade
 import com.example.domain.requests.NewGradeRequest
 import com.example.domain.responses.GradeResponse
 import com.example.domain.services.GradeService

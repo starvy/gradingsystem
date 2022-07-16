@@ -1,7 +1,6 @@
 package com.example.domain.responses
 
 import com.example.domain.model.Grade
-import com.example.domain.model.User
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonRootName
 import io.quarkus.runtime.annotations.RegisterForReflection
