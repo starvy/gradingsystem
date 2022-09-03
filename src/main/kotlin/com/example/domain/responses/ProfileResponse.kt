@@ -1,0 +1,44 @@
+package com.example.domain.responses
+
+import com.example.domain.model.Grade
+import com.example.domain.model.Group
+import com.example.domain.model.User
+import com.fasterxml.jackson.annotation.JsonProperty
+import com.fasterxml.jackson.annotation.JsonRootName
+import io.quarkus.runtime.annotations.RegisterForReflection
+
+@JsonRootName("user_profile")
+@RegisterForReflection
+data class ProfileResponse(
+    @JsonProperty("username")
+    val username: String,
+
+    @JsonProperty
+    val email: String,
+
+    @JsonProperty
+    val role: String,
+
+    @JsonProperty
+    val groups: List<Group>,
+
+    @JsonProperty
+    val grades: List<Grade>,
+) {
+    companion object {
+        @JvmStatic
+        fun build(user: User): ProfileResponse = ProfileResponse(
+            username = user.username,
+            email = user.email,
+            role = user.role,
+            groups = user.groups.map {
+                it.users = mutableListOf()
+                it
+            },
+            grades = user.grades.map {
+                it.student = User()
+                it
+            }
+        )
+    }
+}

@@ -4,6 +4,7 @@ import com.example.domain.*
 import com.example.domain.repositories.UserRepository
 import com.example.domain.requests.UserLoginRequest
 import com.example.domain.requests.UserRegistrationRequest
+import com.example.domain.responses.ProfileResponse
 import com.example.domain.responses.UserResponse
 import com.example.infrastructure.security.BCryptHashProvider
 import com.example.infrastructure.security.JwtTokenProvider
@@ -18,6 +19,13 @@ class UserService(
     fun get(username: String): UserResponse = repository.findByUsername(username)?.run {
         UserResponse.build(this, tokenProvider.create(username, role)) // TODO maybe don't return the token
     } ?: throw UserNotFoundException()
+
+    /**  */
+    fun getAll(): List<ProfileResponse> {
+        return repository.findAll().list().map {
+            ProfileResponse.build(user = it)
+        }
+    }
 
     fun register(newUser: UserRegistrationRequest): UserResponse = newUser.run {
         if (repository.existsUsername(newUser.username)) throw UsernameAlreadyExistsException()

@@ -10,7 +10,7 @@ import javax.enterprise.context.ApplicationScoped
 
 @ApplicationScoped
 class GroupService(
-    private val groupRepository: GroupRepository,
+    public val groupRepository: GroupRepository,
     private val userRepository: UserRepository,
 ) {
     /** A new group is created and users are added to it */
@@ -40,4 +40,6 @@ class GroupService(
             }
         }
     }
+
+    fun findById(id: Long) = groupRepository.findById(id)
 }
