@@ -2,6 +2,7 @@ package com.example.domain.services
 
 import com.example.domain.UserIsInGroup
 import com.example.domain.UserNotFoundException
+import com.example.domain.model.User
 import com.example.domain.repositories.GroupRepository
 import com.example.domain.repositories.UserRepository
 import com.example.domain.requests.GroupUpdateRequest
@@ -42,4 +43,12 @@ class GroupService(
     }
 
     fun findById(id: Long) = groupRepository.findById(id)
+
+    // checks whether both users are in the same group
+    fun bothInGroup(user1: User, user2: User): Boolean {
+        for (group in user1.groups) {
+            if (user2.groups.contains(group)) return true
+        }
+        return false
+    }
 }

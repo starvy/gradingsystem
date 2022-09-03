@@ -12,7 +12,6 @@ class GradeService(
     private val userRepository: UserRepository,
 ) {
     fun add(newGradeRequest: NewGradeRequest): GradeResponse = newGradeRequest.run {
-        println(newGradeRequest)
         GradeResponse.build(
                 this.toEntity().also {
                 println(studentId)
