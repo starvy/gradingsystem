@@ -1,4 +1,4 @@
-package com.example.domain.resources
+package com.example.domain.resources.user
 
 import com.example.domain.requests.UserLoginRequest
 import com.example.domain.requests.UserRegistrationRequest

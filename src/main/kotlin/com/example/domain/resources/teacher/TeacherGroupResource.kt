@@ -1,32 +1,27 @@
-package com.example.domain.resources
+package com.example.domain.resources.teacher
 
 import com.example.domain.requests.GroupUpdateRequest
 import com.example.domain.requests.NewGroupRequest
 import com.example.domain.responses.ProfileResponse
-import com.example.domain.responses.UserResponse
 import com.example.domain.services.GroupService
-import com.example.infrastructure.security.Role
 import com.example.infrastructure.security.Role.ADMIN
 import com.example.infrastructure.security.Role.SUPERADMIN
 import com.example.infrastructure.security.Role.TEACHER
-import io.quarkus.security.Authenticated
 import java.net.URI
-import javax.annotation.security.PermitAll
 import javax.annotation.security.RolesAllowed
 import javax.transaction.Transactional
 import javax.ws.rs.GET
 import javax.ws.rs.POST
 import javax.ws.rs.Path
 import javax.ws.rs.PathParam
-import javax.ws.rs.QueryParam
 import javax.ws.rs.core.Response
 import javax.ws.rs.core.Response.*
 
-@Path("/")
-class GroupResource(
+@Path("/teacher")
+class TeacherGroupResource(
     private val groupService: GroupService,
 ) {
-    @Path("group")
+    @Path("/group")
     @POST
     @Transactional
     @RolesAllowed(TEACHER, ADMIN, SUPERADMIN)
@@ -35,12 +30,12 @@ class GroupResource(
         return created(URI.create("/")).build()
     }
 
-    @Path("group/update")
+    @Path("/group/update")
     @POST
     @RolesAllowed(TEACHER, ADMIN, SUPERADMIN)
     fun addUsersToExistingGroup(updateRequest: GroupUpdateRequest): Response = ok(groupService.updateGroup(updateRequest)).build()
 
-    @Path("group/{id}")
+    @Path("/group/{id}")
     @GET
     @RolesAllowed(TEACHER, ADMIN, SUPERADMIN)
     fun getGroup(@PathParam("id") id: Long): Response {

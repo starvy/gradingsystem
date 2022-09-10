@@ -16,4 +16,8 @@ open class Class(
 
     @OneToOne
     open var grade: Grade? = null,
+
+    @ManyToOne
+    @JoinColumn(name = "group_id", nullable = true)
+    open var group: Group = Group(),
 )

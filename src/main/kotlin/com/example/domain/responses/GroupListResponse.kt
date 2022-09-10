@@ -5,16 +5,16 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonRootName
 import io.quarkus.runtime.annotations.RegisterForReflection
 
-@JsonRootName("group")
+@JsonRootName("groups")
 @RegisterForReflection
-data class GroupResponse(
+data class GroupListResponse (
     @JsonProperty
-    val names: List<String>,
+    val groups: List<GroupResponse>,
 ) {
     companion object {
         @JvmStatic
-        fun build(group: Group) = GroupResponse(
-            names = group.users.map { it.fullName }
+        fun build(groups: List<Group>): GroupListResponse = GroupListResponse(
+           groups = groups.map { GroupResponse.build(it) }
         )
     }
 }

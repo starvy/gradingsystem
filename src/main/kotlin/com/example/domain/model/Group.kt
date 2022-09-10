@@ -4,17 +4,21 @@ import javax.persistence.*
 
 /** One group of people in school e.g. 1.A, 2.B, 1.C 1.K😎 */
 @Entity(name = "t_groups")
-class Group(
+open class Group(
     @Id
     @GeneratedValue
     var id: Long = 0,
 
     @Column(length = 255)
-    var title: String = "",
+    open var title: String = "",
 
     @Column(length = 255)
-    var description: String = "",
+    open var description: String = "",
 
     @ManyToMany(mappedBy = "groups")
-    var users: MutableList<User> = mutableListOf(),
+    open var users: MutableList<User> = mutableListOf(),
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "group")
+    open var classes: MutableList<Class> = mutableListOf(),
+
 )

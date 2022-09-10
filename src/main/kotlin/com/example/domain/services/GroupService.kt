@@ -7,6 +7,7 @@ import com.example.domain.repositories.GroupRepository
 import com.example.domain.repositories.UserRepository
 import com.example.domain.requests.GroupUpdateRequest
 import com.example.domain.requests.NewGroupRequest
+import com.example.domain.responses.GroupListResponse
 import javax.enterprise.context.ApplicationScoped
 
 @ApplicationScoped
@@ -41,6 +42,16 @@ class GroupService(
             }
         }
     }
+
+    /*fun getMyGroups(username: String) {
+        val user = userRepository.findByUsername(username)
+        val groups = user!!.groups
+        return groups
+    }*/
+
+    fun getMyGroups(username: String) = GroupListResponse.build(
+        userRepository.findByUsername(username)!!.groups
+    )
 
     fun findById(id: Long) = groupRepository.findById(id)
 
