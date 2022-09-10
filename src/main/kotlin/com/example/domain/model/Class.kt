@@ -1,5 +1,6 @@
 package com.example.domain.model
 
+import org.jetbrains.annotations.Nullable
 import javax.persistence.*
 
 /** Group of people learning one subject - e.g. English Class, Math Class
@@ -12,12 +13,13 @@ open class Class(
     var id: Long = 0,
 
     @Column(nullable = false)
-    open var name: String = "",
-
-    @OneToOne
-    open var grade: Grade? = null,
+    open var title: String = "",
 
     @ManyToOne
     @JoinColumn(name = "group_id", nullable = true)
     open var group: Group = Group(),
+
+    @ManyToMany
+    @JoinTable(name = "t_users_classes")
+    open var teachers: MutableList<User> = mutableListOf(),
 )

@@ -5,7 +5,7 @@ import com.example.domain.requests.NewGradeRequest
 import com.example.domain.responses.GradeResponse
 import com.example.domain.services.GradeService
 import com.example.domain.services.GroupService
-import com.example.infrastructure.security.Role
+import com.example.infrastructure.security.RoleType
 import javax.annotation.security.RolesAllowed
 import javax.transaction.Transactional
 import javax.validation.Valid
@@ -27,7 +27,7 @@ class GradeResource(
 ) {
     @POST
     @Transactional
-    @RolesAllowed(Role.TEACHER, Role.ADMIN, Role.SUPERADMIN)
+    @RolesAllowed(RoleType.TEACHER, RoleType.ADMIN, RoleType.SUPERADMIN)
     fun newGrade(
         @Context securityContext: SecurityContext,
         @Valid @NotNull newGradeRequest: NewGradeRequest

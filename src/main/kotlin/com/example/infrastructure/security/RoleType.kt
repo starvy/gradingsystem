@@ -1,6 +1,6 @@
 package com.example.infrastructure.security
 
-object Role {
+object RoleType {
     const val USER = "USER"
     const val STUDENT = "STUDENT"
     const val TEACHER = "TEACHER"

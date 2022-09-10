@@ -4,9 +4,9 @@ import com.example.domain.requests.GroupUpdateRequest
 import com.example.domain.requests.NewGroupRequest
 import com.example.domain.responses.ProfileResponse
 import com.example.domain.services.GroupService
-import com.example.infrastructure.security.Role.ADMIN
-import com.example.infrastructure.security.Role.SUPERADMIN
-import com.example.infrastructure.security.Role.TEACHER
+import com.example.infrastructure.security.RoleType.ADMIN
+import com.example.infrastructure.security.RoleType.SUPERADMIN
+import com.example.infrastructure.security.RoleType.TEACHER
 import java.net.URI
 import javax.annotation.security.RolesAllowed
 import javax.transaction.Transactional

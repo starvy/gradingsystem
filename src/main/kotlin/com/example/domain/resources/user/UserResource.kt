@@ -3,7 +3,7 @@ package com.example.domain.resources.user
 import com.example.domain.requests.UserLoginRequest
 import com.example.domain.requests.UserRegistrationRequest
 import com.example.domain.services.UserService
-import com.example.infrastructure.security.Role.SUPERADMIN
+import com.example.infrastructure.security.RoleType.SUPERADMIN
 import io.quarkus.security.Authenticated
 import javax.annotation.security.PermitAll
 import javax.annotation.security.RolesAllowed

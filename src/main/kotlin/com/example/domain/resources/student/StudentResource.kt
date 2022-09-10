@@ -1,7 +1,7 @@
 package com.example.domain.resources.student
 
 import com.example.domain.services.StudentService
-import com.example.infrastructure.security.Role
+import com.example.infrastructure.security.RoleType
 import javax.annotation.security.RolesAllowed
 import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
@@ -16,6 +16,6 @@ class StudentResource (
 ) {
     @GET
     @Path("/{id}")
-    @RolesAllowed(Role.TEACHER, Role.ADMIN, Role.SUPERADMIN) // TODO roles as seperate table with Many To Many relationship with User
+    @RolesAllowed(RoleType.TEACHER, RoleType.ADMIN, RoleType.SUPERADMIN) // TODO roles as seperate table with Many To Many relationship with User
     fun getStudent(@PathParam("id") id: Long): Response = ok(studentService.get(id)).build()
 }

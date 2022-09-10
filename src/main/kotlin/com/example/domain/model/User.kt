@@ -1,8 +1,9 @@
 package com.example.domain.model
 
 import com.example.infrastructure.ValidationMessages.USERNAME_MUST_MATCH_PATTERN
-import com.example.infrastructure.security.Role
+import com.example.infrastructure.security.RoleType
 import io.quarkus.runtime.annotations.RegisterForReflection
+import org.jetbrains.annotations.Nullable
 import javax.persistence.*
 import javax.validation.constraints.Email
 import javax.validation.constraints.NotBlank
@@ -34,7 +35,7 @@ open class User(
     @NotBlank
     open var password: String = "",
 
-    open var role: String = Role.USER,
+    open var role: String = RoleType.USER,
 
     open var fullName: String = "",
 
@@ -46,5 +47,8 @@ open class User(
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "student")
     open var grades: MutableList<Grade> = mutableListOf(),
+
+    @ManyToMany(mappedBy = "teachers")
+    open var classes: MutableList<Class> = mutableListOf()
 )
 
