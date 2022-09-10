@@ -8,6 +8,9 @@ import io.quarkus.runtime.annotations.RegisterForReflection
 @JsonRootName("user")
 @RegisterForReflection
 data class UserResponse(
+    @JsonProperty
+    val id: Long,
+
     @JsonProperty("username")
     val username: String,
 
@@ -20,6 +23,7 @@ data class UserResponse(
     companion object {
         @JvmStatic
         fun build(user: User, token: String): UserResponse = UserResponse(
+            id = user.id,
             username = user.username,
             email = user.email,
             token = token,
