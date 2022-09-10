@@ -2,6 +2,7 @@ package com.example.domain.model
 
 import javax.persistence.*
 
+/** One group of people in school e.g. 1.A, 2.B, 1.C 1.K😎 */
 @Entity(name = "t_groups")
 class Group(
     @Id

@@ -5,8 +5,10 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.OneToMany
 
+/** Collection of lessons for every school day, repeats every week
+ * TODO add even and odd weeks*/
 @Entity
-open class TimeTable(
+open class PeriodicTimeTable(
     @Id
     @GeneratedValue
     var id: Long = 0,
@@ -16,6 +18,6 @@ open class TimeTable(
     var description: String = "",
 
     @OneToMany
-    var timeSlots: MutableList<TimeSlot> = mutableListOf(),
+    var periodicTimeSlots: MutableList<PeriodicTimeSlot> = mutableListOf(),
 ) {
 }

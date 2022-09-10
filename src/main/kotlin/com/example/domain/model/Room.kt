@@ -4,6 +4,7 @@ import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
 
+/** Representation of physical classroom in school */
 @Entity
 class Room( // TODO rename to classroom??
     @Id

@@ -3,6 +3,7 @@ package com.example.domain.model
 import io.quarkus.runtime.annotations.RegisterForReflection
 import javax.persistence.*
 
+/** Grade given by teachers that are in the same class as students */
 @Entity(name = "t_grades")
 @RegisterForReflection
 open class Grade(
@@ -17,8 +18,11 @@ open class Grade(
 
     open var value: Byte = 0,
 
-    @OneToOne
-    open var subject: Subject? = null,
+    @ManyToOne
+    open var teacher: User? = null,
+
+    @ManyToOne
+    open var c: Class? = null,
 
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = true)

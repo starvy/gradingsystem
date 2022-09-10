@@ -6,8 +6,10 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.OneToOne
 
+/** One lesson in timetable
+ * e.g. Czech language lesson Monday 8:00 - 8:45 */
 @Entity
-open class TimeSlot(
+open class PeriodicTimeSlot(
     @Id
     @GeneratedValue
     var id: Long = 0,
@@ -17,11 +19,11 @@ open class TimeSlot(
     open var endTime: Time = Time.valueOf("00:00:00"),
 
     open var title: String = "",
-    
+
     open var description: String = "",
-    
+
     @OneToOne // optional - can be null
-    open var subject: Subject? = null, 
+    open var aClass: Class? = null,
 
     @OneToOne // optional - can be null
     open var room: Room? = null,
@@ -29,4 +31,4 @@ open class TimeSlot(
     @OneToOne
     open var group: Group? = null,
 
-)
+    )

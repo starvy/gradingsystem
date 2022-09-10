@@ -8,6 +8,11 @@ import javax.validation.constraints.Email
 import javax.validation.constraints.NotBlank
 import javax.validation.constraints.Pattern
 
+/** One User in database containing login data as well as personal information
+ * TODO
+ * add more personal info to Profile and encrypt, so it can only be accessed by
+ * their teachers that have master passwords for the data
+ * */
 @Entity(name = "t_users")
 @RegisterForReflection
 open class User(
