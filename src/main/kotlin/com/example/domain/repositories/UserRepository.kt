@@ -25,4 +25,13 @@ class UserRepository : PanacheRepositoryBase<User, Long> {
     ) > 0
 
     fun isInGroup(group: Group, user: User): Boolean = user.groups.contains(group)
+
+
+    fun isTeacherInClass(user: User, c: com.example.domain.model.Class): Boolean {
+        return c.teachers.contains(user)
+    }
+
+    fun isUserInClass(user: User, c: com.example.domain.model.Class): Boolean {
+        return c.group.users.contains(user)
+    }
 }

@@ -1,5 +1,6 @@
 package com.example.domain.requests
 
+import com.example.domain.model.Class
 import com.example.domain.model.Grade
 import com.example.domain.model.User
 import com.fasterxml.jackson.annotation.JsonProperty
@@ -13,6 +14,9 @@ data class NewGradeRequest(
     val title: String,
     // TODO add description
 
+    @JsonProperty("classId")
+    val classId: Long,
+
     @JsonProperty("studentId")
     val studentId: Long,
 
@@ -22,6 +26,7 @@ data class NewGradeRequest(
 ) {
     fun toEntity() = Grade(
         title = title,
+        c = Class(),
         student = User(),
         value = value
     )

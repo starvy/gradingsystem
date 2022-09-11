@@ -1,6 +1,5 @@
 package com.example.domain.responses
 
-import com.example.domain.model.Grade
 import com.example.domain.model.Group
 import com.example.domain.model.User
 import com.fasterxml.jackson.annotation.JsonProperty
@@ -26,7 +25,7 @@ data class ProfileResponse(
     val groups: List<Group>,
 
     @JsonProperty
-    val grades: List<Grade>,
+    val grades: List<GradeResponse>,
 ) {
     companion object {
         @JvmStatic
@@ -41,8 +40,7 @@ data class ProfileResponse(
                 it
             },
             grades = user.grades.map {
-                it.student = User()
-                it
+                GradeResponse.build(grade = it)
             }
         )
     }

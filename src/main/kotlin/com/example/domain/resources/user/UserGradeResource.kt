@@ -1,22 +1,12 @@
-package com.example.domain.resources
+package com.example.domain.resources.user
 
 import com.example.domain.repositories.UserRepository
-import com.example.domain.requests.NewGradeRequest
 import com.example.domain.responses.GradeResponse
 import com.example.domain.services.GradeService
 import com.example.domain.services.GroupService
-import com.example.infrastructure.security.RoleType
-import javax.annotation.security.RolesAllowed
-import javax.transaction.Transactional
-import javax.validation.Valid
-import javax.validation.constraints.NotNull
 import javax.ws.rs.GET
-import javax.ws.rs.POST
 import javax.ws.rs.Path
 import javax.ws.rs.core.Context
-import javax.ws.rs.core.Response
-import javax.ws.rs.core.Response.ok
-import javax.ws.rs.core.Response.status
 import javax.ws.rs.core.SecurityContext
 
 @Path("/grades")
@@ -25,7 +15,7 @@ class GradeResource(
     private val groupService: GroupService,
     private val userRepository: UserRepository,
 ) {
-    @POST
+    /*@POST
     @Transactional
     @RolesAllowed(RoleType.TEACHER, RoleType.ADMIN, RoleType.SUPERADMIN)
     fun newGrade(
@@ -42,7 +32,7 @@ class GradeResource(
             return ok(service.add(newGradeRequest)).status(Response.Status.CREATED).build()
         }
         return status(Response.Status.UNAUTHORIZED).build()
-    }
+    }*/
     @GET
     fun getGrades(
         @Context securityContext: SecurityContext
