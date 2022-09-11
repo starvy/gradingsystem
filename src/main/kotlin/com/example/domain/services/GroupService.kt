@@ -43,12 +43,6 @@ class GroupService(
         }
     }
 
-    /*fun getMyGroups(username: String) {
-        val user = userRepository.findByUsername(username)
-        val groups = user!!.groups
-        return groups
-    }*/
-
     fun getMyGroups(username: String) = GroupListResponse.build(
         userRepository.findByUsername(username)!!.groups
     )

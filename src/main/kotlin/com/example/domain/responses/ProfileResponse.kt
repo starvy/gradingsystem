@@ -37,6 +37,7 @@ data class ProfileResponse(
             role = user.role,
             groups = user.groups.map {
                 it.users = mutableListOf()
+                it.classes = mutableListOf()
                 it
             },
             grades = user.grades.map {
