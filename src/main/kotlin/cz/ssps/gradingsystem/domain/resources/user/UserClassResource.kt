@@ -14,6 +14,9 @@ import javax.ws.rs.core.SecurityContext
 class UserClassResource(
     private val classService: ClassService,
 ) {
+    /**
+     * Get classes where user participates
+     * */
     @Path("")
     @GET
     @Authenticated

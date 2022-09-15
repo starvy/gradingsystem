@@ -11,8 +11,11 @@ import javax.transaction.Transactional
 import javax.validation.Valid
 import javax.validation.constraints.NotNull
 import javax.ws.rs.*
-import javax.ws.rs.core.*
+import javax.ws.rs.core.Context
+import javax.ws.rs.core.MediaType
+import javax.ws.rs.core.Response
 import javax.ws.rs.core.Response.ok
+import javax.ws.rs.core.SecurityContext
 
 
 @Path("/")
@@ -28,11 +31,10 @@ class UserResource(
     @PermitAll
     fun register(
         @Valid @NotNull newUser: UserRegistrationRequest,
-    ): Response = service.register(newUser).run {
-        ok(this).status(Response.Status.CREATED)
-            .location(UriBuilder.fromResource(UserResource::class.java).path("users/$username").build())
-            .build()
-    }
+    ): Response = ok(
+        service.register(newUser)
+    ).status(Response.Status.CREATED)
+        .build()
 
 
     @POST
@@ -40,7 +42,10 @@ class UserResource(
     @PermitAll
     fun login(
         @Valid @NotNull userLoginRequest: UserLoginRequest
-    ): Response = ok(service.login(userLoginRequest)).status(Response.Status.OK).build()
+    ): Response = ok(
+        service.login(userLoginRequest)
+    ).status(Response.Status.OK)
+        .build()
 
 
     @GET
@@ -48,11 +53,15 @@ class UserResource(
     @Authenticated
     fun getUser(
         @Context securityContext: SecurityContext
-    ): Response = ok(service.get(securityContext.userPrincipal.name)).build()
+    ): Response = ok(
+        service.get(securityContext.userPrincipal.name)
+    ).build()
 
     @GET
     @Path("users")
     @RolesAllowed(SUPERADMIN)
-    fun getAllUsers(): Response = ok(service.getAll()).build()
+    fun getAllUsers(): Response = ok(
+        service.getAll()
+    ).build()
 
 }

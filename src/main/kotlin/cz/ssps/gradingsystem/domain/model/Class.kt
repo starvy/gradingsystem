@@ -22,3 +22,4 @@ open class Class(
     @JoinTable(name = "t_users_classes")
     open var teachers: MutableList<User> = mutableListOf(),
 )
+

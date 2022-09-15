@@ -21,6 +21,7 @@ import javax.ws.rs.core.Response.*
 class TeacherGroupResource(
     private val groupService: GroupService,
 ) {
+    /** Creates new group */
     @Path("/group")
     @POST
     @Transactional
@@ -30,11 +31,13 @@ class TeacherGroupResource(
         return created(URI.create("/")).build()
     }
 
+    /** Updates existing group */
     @Path("/group/update")
     @POST
     @RolesAllowed(TEACHER, ADMIN, SUPERADMIN)
     fun addUsersToExistingGroup(updateRequest: GroupUpdateRequest): Response = ok(groupService.updateGroup(updateRequest)).build()
 
+    /** Gets group by id */
     @Path("/group/{id}")
     @GET
     @RolesAllowed(TEACHER, ADMIN, SUPERADMIN)

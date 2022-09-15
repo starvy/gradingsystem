@@ -8,6 +8,9 @@ import io.quarkus.runtime.annotations.RegisterForReflection
 @JsonRootName("grade")
 @RegisterForReflection
 data class GradeResponse(
+    @JsonProperty("id")
+    val id: Long,
+
     @JsonProperty("name")
     val name: String,
 
@@ -16,17 +19,14 @@ data class GradeResponse(
 
     @JsonProperty("value")
     val value: Byte,
-
-    @JsonProperty
-    val studentId: Long,
 ){
     companion object {
         @JvmStatic
         fun build(grade: Grade): GradeResponse = GradeResponse(
+            id = grade.id,
             name = grade.title,
             description = grade.description,
             value = grade.value,
-            studentId = grade.student.id,
         )
     }
 }

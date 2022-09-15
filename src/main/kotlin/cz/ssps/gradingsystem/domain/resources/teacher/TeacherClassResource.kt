@@ -14,6 +14,9 @@ import javax.ws.rs.Path
 class TeacherClassResource(
     private val classService: ClassService,
 ) {
+    /**
+     * Creates new class
+     * */
     @Path("")
     @POST
     @Transactional

@@ -1,3 +1,5 @@
+package cz.ssps.gradingsystem.infrastructure
+
 import javax.inject.Qualifier
 
 @Qualifier
