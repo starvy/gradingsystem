@@ -44,3 +44,8 @@ INSERT INTO public.t_grades (id, description, title, value, student_id) VALUES (
 INSERT INTO public.t_grades (id, description, title, value, student_id) VALUES (6, '', 'programovani v c saarp', 1, 1);
 INSERT INTO public.t_grades (id, description, title, value, student_id) VALUES (7, '', 'cestina diktat', 3, 1);
 INSERT INTO public.t_grades (id, description, title, value, student_id) VALUES (8, '', 'cestion prace v hodine', 1, 1);
+INSERT INTO public.t_groups (id, description, title) VALUES (1, '1.K prestiz', '1.K');
+INSERT INTO public.t_users_groups (users_id, groups_id) VALUES (4, 1);
+INSERT INTO public.t_users_groups (users_id, groups_id) VALUES (6, 1);
+INSERT INTO public.t_classes (id, title, group_id) VALUES (1, 'Divna cj', 1);
+INSERT INTO public.t_users_classes (classes_id, teachers_id) VALUES (1, 3);

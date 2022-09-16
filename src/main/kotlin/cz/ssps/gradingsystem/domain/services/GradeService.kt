@@ -21,7 +21,7 @@ class GradeService(
         val c = classRepository.findById(this.classId)!!
 
         if (!(userRepository.isTeacherInClass(teacher, c) &&
-            userRepository.isUserInClass(student, c))) {
+                    userRepository.isUserInClass(student, c))) {
             throw ForbiddenException("User is not in class")
         }
 
@@ -34,7 +34,6 @@ class GradeService(
                 gradeRepository.persist(it)
             }
         )
-
     }
 
     fun get(username: String): List<GradeResponse> {
