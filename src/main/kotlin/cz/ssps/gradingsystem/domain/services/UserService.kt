@@ -20,7 +20,6 @@ class UserService(
         UserResponse.build(this, tokenProvider.create(username, role)) // TODO maybe don't return the token
     } ?: throw UserNotFoundException()
 
-    /**  */
     fun getAll(): List<ProfileResponse> {
         return repository.findAll().list().map {
             ProfileResponse.build(user = it)

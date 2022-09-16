@@ -2,7 +2,6 @@ package cz.ssps.gradingsystem.domain.services
 
 import cz.ssps.gradingsystem.domain.UserIsInGroup
 import cz.ssps.gradingsystem.domain.UserNotFoundException
-import cz.ssps.gradingsystem.domain.model.User
 import cz.ssps.gradingsystem.domain.repositories.GroupRepository
 import cz.ssps.gradingsystem.domain.repositories.UserRepository
 import cz.ssps.gradingsystem.domain.requests.GroupUpdateRequest
@@ -18,12 +17,13 @@ class GroupService(
     /** A new group is created and users are added to it */
     fun createAndAddUsers(groupRequest: NewGroupRequest) = groupRequest.run {
         val group = this.toEntity()
-        userIds.map { id ->
-            try {
-                userRepository.findById(id).also {
-                    it!!.groups.add(group)
+        userIds.forEach { id ->
+            userRepository.findById(id).also {
+                if (it == null) {
+                    throw UserNotFoundException()
                 }
-            } catch (e: java.lang.NullPointerException) { throw UserNotFoundException() }
+                it.groups.add(group)
+            }
         }
         groupRepository.persist(group)
     }
@@ -48,12 +48,4 @@ class GroupService(
     )
 
     fun findById(id: Long) = groupRepository.findById(id)
-
-    // checks whether both users are in the same group
-    fun bothInGroup(user1: User, user2: User): Boolean {
-        for (group in user1.groups) {
-            if (user2.groups.contains(group)) return true
-        }
-        return false
-    }
 }
