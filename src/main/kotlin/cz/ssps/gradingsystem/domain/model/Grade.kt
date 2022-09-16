@@ -22,6 +22,7 @@ open class Grade(
     open var teacher: User? = null,
 
     @ManyToOne
+//    @JoinColumn(name = "class_id", nullable = true)
     open var c: Class? = null,
 
     @ManyToOne
