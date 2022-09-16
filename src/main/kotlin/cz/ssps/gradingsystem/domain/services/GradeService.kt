@@ -1,5 +1,6 @@
 package cz.ssps.gradingsystem.domain.services
 
+import cz.ssps.gradingsystem.domain.model.User
 import cz.ssps.gradingsystem.domain.repositories.ClassRepository
 import cz.ssps.gradingsystem.domain.repositories.GradeRepository
 import cz.ssps.gradingsystem.domain.repositories.UserRepository
@@ -27,8 +28,8 @@ class GradeService(
         val grade = this.toEntity()
         GradeResponse.build(
             grade.also {
-                it.teacher = teacher
-                it.student = student
+                it.teacher = User(teacher.id)
+                it.student = User(student.id)
                 it.c = c
                 gradeRepository.persist(it)
             }

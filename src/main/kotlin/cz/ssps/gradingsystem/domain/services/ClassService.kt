@@ -17,20 +17,23 @@ class ClassService(
         if (!(teacher.role == "TEACHER" || teacher.role == "ADMIN" || teacher.role == "SUPERADMIN")) {
             throw ForbiddenException("User is not a teacher")
         }
+
         val c = this.toEntity()
-        c.group = groupService.findById(groupId)!!
-        c.teachers.add(teacher)
+        classRepository.persist(c).also {
+            c.group = groupService.findById(groupId)!!
+            c.teachers.add(teacher)
 
-        teacher.classes.add(c)
-        c.group.classes.add(c)
-
-        classRepository.persist(c)
+            teacher.classes.add(c)
+            c.group.classes.add(c)
+        }
     }
 
     fun getMyClasses(username: String): List<cz.ssps.gradingsystem.domain.model.Class> {
         val user = userRepository.findByUsername(username)!!
         val classes: MutableList<cz.ssps.gradingsystem.domain.model.Class> = mutableListOf()
+        // Students
         classes.addAll(user.classes)
+        // Teachers
         classes.addAll(user.groups.flatMap { it.classes })
         return classes
     }

@@ -11,8 +11,11 @@ data class GradeResponse(
     @JsonProperty("id")
     val id: Long,
 
-    @JsonProperty("name")
-    val name: String,
+    @JsonProperty("title")
+    val title: String,
+
+    @JsonProperty("class")
+    val c: SmallClassResponse,
 
     @JsonProperty("description")
     val description: String,
@@ -24,9 +27,16 @@ data class GradeResponse(
         @JvmStatic
         fun build(grade: Grade): GradeResponse = GradeResponse(
             id = grade.id,
-            name = grade.title,
+            title = grade.title,
+            c = SmallClassResponse(grade.id, grade.title),
             description = grade.description,
             value = grade.value,
         )
     }
+
+    @JsonRootName("class")
+    data class SmallClassResponse(
+        val id: Long,
+        val title: String,
+    )
 }

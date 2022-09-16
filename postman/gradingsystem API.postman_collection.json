@@ -1,0 +1,406 @@
+{
+	"info": {
+		"_postman_id": "4c0943f1-e4c9-4b88-8d6b-f31e1c59e8ff",
+		"name": "gradingsystem API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "User Registration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"user\": {\n  \"username\": \"debil\",\n  \"email\": \"debil@gmail.com\",\n  \"password\": \"debil\"\n}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/users"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"username\": \"qui id non laboris\",\n  \"email\": \"anim culpa a\",\n  \"password\": \"ut non\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/users"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "User Login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"user\": {\n  \"email\": \"blatny@blatny.cz\",\n  \"password\": \"honzablatny\"\n}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/users/login"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"irure magna ad\",\n  \"password\": \"voluptate Excepteur dolor\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/users/login"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Get All Users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL3ZlbG1pbGVnaXRpbW5pc3RyYW5rYS5kdXZlcnlob2RuZSIsInN1YiI6InN1cGVyYWRtaW4iLCJpYXQiOjE2NjI4MjczNDksImV4cCI6MTY2Mjg0ODk0OSwiZ3JvdXBzIjpbIlNVUEVSQURNSU4iXSwianRpIjoiYWI0Nzc3ZTUtMWVhZC00ZjM5LWEwMjctN2JkOWZlZjA4OGY2In0.cgIY9RNogVIruNwNbOSymlXRfZzt-qL-iNMuhyK4MZCJvfzdzm9TwLZwqW5TfOSIZkBtR7O8M36JV5wPz7DQ1QVsuRYLNyXtY9Bjndh4FoD_GvYClKu158DFi5Vmxyan0rp3u9bpTIItKZtkzJgrxSfiJu6BapvvrFF-ynt6lDyGWy6bdkTAWVJPKVWHl5tIYcP9pSul1bJnxvpnmQypIDUrQ0CG129RV-UtyN5NQ0rkYMVeY6hQCPsQWChDHXNTLNT9tUw59ymEcY8UhZJtnvf0FpmQN9ljUFerkltZoJYwHt73RLYMMbV5xxepV58xZzwrVABJe-a07q6lrf49vw"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/users"
+					},
+					"response": []
+				},
+				{
+					"name": "/user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL3ZlbG1pbGVnaXRpbW5pc3RyYW5rYS5kdXZlcnlob2RuZSIsInN1YiI6ImRlYmlsIiwiaWF0IjoxNjU3Mzc4NzI3LCJleHAiOjE2NTczNzkzMjcsImdyb3VwcyI6WyJVU0VSIl0sImp0aSI6ImFiY2FjNWVkLTM3NDMtNDYwNC04MmY1LWZjNDZiOGVlMGFhOCJ9.rFwkaR2buntGGZA-XOtFBQQSIN1sbvsP9oviFwh3ulRmbnlG1TIs-LhnFQqw233Vc2OLJsEehkYbZHfW77n9ktQDtehVimOgqfJWMZ4ZUA89VOCuy2uEc7yEE27UkcgUX0ope9MkzyJZXyYyhIWHQF62funcqDEBc0-EstMq1YZ5EP5OhnOWxZudgxV8nblzuVK46Fy_L2svfZjszolWC-z2mdzAgW365N8udkbWGwyrUerHAnq3GdfoMEc5K8RY3hafmssHxpEIc36jK1tTIr-f5Cik1j7i21vL8mg8SRRa54XIQsmBIQyCKNPx252jdt_v85erPmskNCgzdWaZ-w"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/user"
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": "{{baseUrl}}/user"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Authorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": "{{baseUrl}}/user"
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Allowed",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "Added as a part of security scheme: bearer",
+										"key": "Authorization",
+										"value": "Bearer <token>"
+									}
+								],
+								"url": "{{baseUrl}}/user"
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "groups",
+			"item": [
+				{
+					"name": "View Group",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Group",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL3ZlbG1pbGVnaXRpbW5pc3RyYW5rYS5kdXZlcnlob2RuZSIsInN1YiI6InN1cGVyYWRtaW4iLCJpYXQiOjE2NjI4MjQ0MjgsImV4cCI6MTY2Mjg0NjAyOCwiZ3JvdXBzIjpbIlNVUEVSQURNSU4iXSwianRpIjoiZGJmZjBiMGItODEwZS00MzNhLTk4NWYtOWM3YmU0YzYxMjY5In0.waXEKV4fhuQZpwsscdWFKdKYN9gjJaujqjrpOwzgUacdMliqUjnPJfPbCoL999QYT0KDceajgg1pl00o1daDvIoHS56hVA9DZXyASaGL98ipjAO9exSHUBLtpA5Jo3uxuBUbO_GNYJ8A3yeobZsF_4EzL_J1xzqQYKugxL2PsOmZlvF7jMO7KfDCMGGyjWrmffq05X1_OsH6GnxZjituYgTKKFrBivdwNMUi4awKvUNEsNSD8ecq5UNEHdy363pdnzu7gx99iuW8X8gBtYOt-pdnkBYjJomKWzaGkIrDUN9Mqx6eEWbXIVkE2mVZ98_RhRfVCNxIxMow1pa2pp4stQ"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"group\": {\n        \"title\": \"1.K\",\n        \"description\": \"prvni rocnik cybersec\",\n        \"userIds\": [\n            3,4,6\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/teacher/group"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "grades",
+			"item": [
+				{
+					"name": "Get Grades",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Add Grade",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "classes",
+			"item": [
+				{
+					"name": "New Class",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL3ZlbG1pbGVnaXRpbW5pc3RyYW5rYS5kdXZlcnlob2RuZSIsInN1YiI6InN1cGVyYWRtaW4iLCJpYXQiOjE2NjI4ODc0ODMsImV4cCI6MTY2MjkwOTA4MywiZ3JvdXBzIjpbIlNVUEVSQURNSU4iXSwianRpIjoiMzhkZjIzZDItMzAyMi00ZDFiLThlNzYtNzIzOTk0MTQ0Y2VkIn0.DJMIF2smyej1vBBgBq1d0ZirCYRmm312gcLYF-iF_aPMy5cxMw-QedUwz4XMD-E-iF26CqCnHgGCcPpNb_deAmPQXhpyup5SOzGFug0n3xrDR-bcDbGRM2qYP5VaKMw6uXw1j35vK5sYVwR9SGxTtoSWT77GnTJdXJlXr2ChemQVX95OcmphHsoLOD1uO5TQYXcZCA-zc9UePWMfG98dUcRlsdrQEC24QhLlM2ZuRJIEuTqq0vqBGSQHh4tE3bJtg7yKMDt8oy9zLWuVxByAiKxSHbIoTfHwJNLWUuobZuOFdEjEqUaW6zz55Q_lPL3FXrFhhh_FhFUrH-hI9sBpVQ"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"group\": {\n    \"title\": \"Divna cestina CLass\",\n    \"groupId\": 1,\n    \"teacherId\": 3\n}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/teacher/class"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Class",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "teacher",
+			"item": [
+				{
+					"name": "Get Grades",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/hello",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "text/plain"
+					}
+				],
+				"url": "{{baseUrl}}/hello"
+			},
+			"response": [
+				{
+					"name": "OK",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "{{baseUrl}}/hello"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": "in veniam cupidatat irure nulla"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "baseUrl",
+			"value": "localhost:8080",
+			"type": "default"
+		},
+		{
+			"key": "teacher_token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL3ZlbG1pbGVnaXRpbW5pc3RyYW5rYS5kdXZlcnlob2RuZSIsInN1YiI6ImF2ZXJhZ2VfdGVhY2hlciIsImlhdCI6MTY2MzI3NTEzNSwiZXhwIjoxNjYzMjk2NzM1LCJncm91cHMiOlsiVEVBQ0hFUiJdLCJqdGkiOiIyNWI0MmVkMC0xMmEzLTQwOWEtOTNlYS1lZTE4ZTg5MWYzODgifQ.bz3DMoShNw0By3Us3iplpzuL423dOj_1elC9IcctYa7VJWzCLEnbwoxbt-IOHkTz1CdgtgGuY8lgTOWkJ57yPIUfAK8URoyb2BjOyjV_mGt9KLWZ7e6w_BnfQk35-zmlB-Qx2h48XgxYx1NkPAez5UMSBMUi_Ip3vrHgLiNDfrqwx29ZNwfjqRPsPzVCNcmV-0hnwsfHGYFH-5-_kPuX5lT6CjEL1Bmkc0C8krdgEaKDC6oBf39HhlfTJuqXTvrwBupEvQt5N4_qzYveFAdnA8busBD33MF8IoMziceQVAoczcRBhq4joucxM_L0aAA-kdF21R2jOGwxodI7lOPaJA"
+		}
+	]
+}
