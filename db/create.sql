@@ -30,7 +30,7 @@ alter table if exists t_users_groups add constraint FKgwi0iqh0r1wfpaibe6xr81eh9 
 alter table if exists t_users_roles add constraint FK8rghlpl6w68ymy8c5sdv4bkeu foreign key (users_id) references t_users;
 alter table if exists t_users_roles add constraint FKb4db7sf7855mfjwtkfukdijwj foreign key (t_roles_id) references t_roles;
 INSERT INTO public.t_users (id, email, fullname, password, role, username) VALUES (1, 'debil@gmail.com', '', '$2a$05$Jrq2TDwLUIPFo5Yda8G8neJrd1DdtDjOJjnaRcI9aJ132QUGOLesK', 'USER', 'debil');
-INSERT INTO public.t_users (id, email, fullname, password, role, username) VALUES (2, 'blatny@blatny.cz', 'Honza', '$2a$12$mlEnv1aMgHvafYCNOBG4N.KUYTS.SLFZtYfnXedUPmJfgeyIlsBKu', 'SUPERADMIN', 'superadmin');
+INSERT INTO public.t_users (id, email, fullname, password, role, username) VALUES (2, 'super@super.cz', 'Superadmin', '$2y$10$UP1dXgF674vSbl01WJSfseeTJW9IiiGewJEGL/wjGEl1d8ozKNTQW', 'SUPERADMIN', 'super');
 INSERT INTO public.t_users (id, email, fullname, password, role, username) VALUES (3, 'teacher@teacher.cz', 'Sample Teacher', '$2y$10$UP1dXgF674vSbl01WJSfseeTJW9IiiGewJEGL/wjGEl1d8ozKNTQW', 'TEACHER', 'average_teacher');
 INSERT INTO public.t_users (id, email, fullname, password, role, username) VALUES (4, 'student@student.cz', 'Sample Student', '$2y$10$UP1dXgF674vSbl01WJSfseeTJW9IiiGewJEGL/wjGEl1d8ozKNTQW', 'STUDENT', 'average_student');
 INSERT INTO public.t_users (id, email, fullname, password, role, username) VALUES (5, 'user@user.cz', 'Sample Student', '$2y$10$UP1dXgF674vSbl01WJSfseeTJW9IiiGewJEGL/wjGEl1d8ozKNTQW', 'USER', 'average_parent');

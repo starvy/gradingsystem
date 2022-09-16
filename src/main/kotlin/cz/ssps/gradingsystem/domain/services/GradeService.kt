@@ -15,19 +15,21 @@ class GradeService(
     private val classRepository: ClassRepository,
 ) {
     fun add(username: String, newGradeRequest: NewGradeRequest): GradeResponse = newGradeRequest.run {
-        val grade = this.toEntity()
-        grade.c = classRepository.findById(classId)!!
         val teacher = userRepository.findByUsername(username)!!
+        val student = userRepository.findById(this.studentId)!!
+        val c = classRepository.findById(this.classId)!!
 
-        if (!(userRepository.isTeacherInClass(teacher, grade.c!!) &&
-            userRepository.isUserInClass(grade.student, grade.c!!))) {
-                throw ForbiddenException("User is not in class")
+        if (!(userRepository.isTeacherInClass(teacher, c) &&
+            userRepository.isUserInClass(student, c))) {
+            throw ForbiddenException("User is not in class")
         }
 
+        val grade = this.toEntity()
         GradeResponse.build(
             grade.also {
                 it.teacher = teacher
-                it.student = userRepository.findById(studentId)!!
+                it.student = student
+                it.c = c
                 gradeRepository.persist(it)
             }
         )
