@@ -9,6 +9,8 @@ import javax.annotation.security.RolesAllowed
 import javax.transaction.Transactional
 import javax.ws.rs.POST
 import javax.ws.rs.Path
+import javax.ws.rs.core.Response
+import javax.ws.rs.core.Response.ok
 
 @Path("/teacher/class")
 class TeacherClassResource(
@@ -21,7 +23,7 @@ class TeacherClassResource(
     @POST
     @Transactional
     @RolesAllowed(TEACHER, ADMIN, SUPERADMIN)
-    fun createClass(newClassRequest: NewClassRequest) {
+    fun createClass(newClassRequest: NewClassRequest): Response = ok(
         classService.createClass(newClassRequest)
-    }
+    ).status(201).build()
 }

@@ -28,7 +28,7 @@ data class GradeResponse(
         fun build(grade: Grade): GradeResponse = GradeResponse(
             id = grade.id,
             title = grade.title,
-            c = SmallClassResponse(grade.id, grade.title),
+            c = SmallClassResponse(grade.c!!.id, grade.c!!.title),
             description = grade.description,
             value = grade.value,
         )

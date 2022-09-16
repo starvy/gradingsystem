@@ -26,10 +26,9 @@ class TeacherGroupResource(
     @POST
     @Transactional
     @RolesAllowed(TEACHER, ADMIN, SUPERADMIN)
-    fun newGroup(newGroupRequest: NewGroupRequest): Response {
+    fun newGroup(newGroupRequest: NewGroupRequest): Response = ok(
         groupService.createAndAddUsers(newGroupRequest)
-        return created(URI.create("/")).build()
-    }
+    ).status(201).build()
 
     /** Updates existing group */
     @Path("/group/update")

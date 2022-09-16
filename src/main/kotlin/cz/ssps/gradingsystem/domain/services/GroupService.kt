@@ -7,6 +7,7 @@ import cz.ssps.gradingsystem.domain.repositories.UserRepository
 import cz.ssps.gradingsystem.domain.requests.GroupUpdateRequest
 import cz.ssps.gradingsystem.domain.requests.NewGroupRequest
 import cz.ssps.gradingsystem.domain.responses.GroupListResponse
+import cz.ssps.gradingsystem.domain.responses.GroupResponse
 import javax.enterprise.context.ApplicationScoped
 
 @ApplicationScoped
@@ -22,10 +23,15 @@ class GroupService(
                 if (it == null) {
                     throw UserNotFoundException()
                 }
+                group.users.add(it)
                 it.groups.add(group)
             }
         }
-        groupRepository.persist(group)
+        GroupResponse.build(
+            group.also {
+                groupRepository.persist(it)
+            }
+        )
     }
 
     fun updateGroup(groupRequest: GroupUpdateRequest) = groupRequest.run {
