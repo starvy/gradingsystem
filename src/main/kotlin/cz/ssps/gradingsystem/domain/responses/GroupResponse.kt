@@ -15,14 +15,30 @@ data class GroupResponse(
     val title: String,
 
     @JsonProperty
-    val names: List<String>,
+    val users: List<CompactUserResponse>,
+
+    @JsonProperty
+    val memberCount: Int,
 ) {
     companion object {
         @JvmStatic
         fun build(group: Group) = GroupResponse(
             id = group.id,
             title = group.title,
-            names = group.users.map { it.fullName }
+            users = group.users.map { CompactUserResponse(it.id, it.fullName, it.email) },
+            memberCount = group.users.size
         )
     }
+
+    @JsonRootName("user")
+    data class CompactUserResponse(
+        @JsonProperty
+        val id: Long,
+
+        @JsonProperty
+        val name: String,
+
+        @JsonProperty
+        val email: String,
+    )
 }

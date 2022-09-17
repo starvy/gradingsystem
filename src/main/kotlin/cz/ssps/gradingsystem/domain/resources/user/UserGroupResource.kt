@@ -18,5 +18,5 @@ class UserGroupResource(
     @Authenticated
     fun getGroups(
         @Context securityContext: SecurityContext,
-    ): Response = ok(groupService.getMyGroups(securityContext.userPrincipal.name)).build()
+    ): Response = ok(groupService.getAll(securityContext.userPrincipal.name)).build()
 }

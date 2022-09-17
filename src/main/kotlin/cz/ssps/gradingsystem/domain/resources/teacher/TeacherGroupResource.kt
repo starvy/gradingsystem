@@ -2,7 +2,7 @@ package cz.ssps.gradingsystem.domain.resources.teacher
 
 import cz.ssps.gradingsystem.domain.requests.GroupUpdateRequest
 import cz.ssps.gradingsystem.domain.requests.NewGroupRequest
-import cz.ssps.gradingsystem.domain.responses.ProfileResponse
+import cz.ssps.gradingsystem.domain.responses.GroupResponse
 import cz.ssps.gradingsystem.domain.services.GroupService
 import cz.ssps.gradingsystem.infrastructure.security.RoleType.ADMIN
 import cz.ssps.gradingsystem.infrastructure.security.RoleType.SUPERADMIN
@@ -26,14 +26,14 @@ class TeacherGroupResource(
     @Transactional
     @RolesAllowed(TEACHER, ADMIN, SUPERADMIN)
     fun newGroup(newGroupRequest: NewGroupRequest): Response = ok(
-        groupService.newGroup(newGroupRequest)
+        groupService.new(newGroupRequest)
     ).status(201).build()
 
     /** Updates existing group */
     @Path("/group/update")
     @POST
     @RolesAllowed(TEACHER, ADMIN, SUPERADMIN)
-    fun addUsersToGroup(updateRequest: GroupUpdateRequest): Response = ok(groupService.updateGroup(updateRequest)).build()
+    fun addUsersToGroup(updateRequest: GroupUpdateRequest): Response = ok(groupService.update(updateRequest)).build()
 
     /** Gets group by id */
     @Path("/group/{id}")
@@ -42,9 +42,7 @@ class TeacherGroupResource(
     fun getGroup(@PathParam("id") id: Long): Response {
         println(groupService.groupRepository.findAll().list())
         val group = groupService.findById(id) ?: return status(Status.NOT_FOUND).build()
-        val response: List<ProfileResponse> = group.users.map {
-            ProfileResponse.build(it)
-        }
+        val response = GroupResponse.build(group)
         return ok(response).build()
     }
 }
