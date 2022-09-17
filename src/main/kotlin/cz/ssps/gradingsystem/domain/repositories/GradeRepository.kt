@@ -3,6 +3,7 @@ package cz.ssps.gradingsystem.domain.repositories
 import cz.ssps.gradingsystem.domain.model.Grade
 import cz.ssps.gradingsystem.infrastructure.utils.QueryBuilder
 import cz.ssps.gradingsystem.infrastructure.utils.QueryBuilder.SELECT
+import cz.ssps.gradingsystem.infrastructure.utils.QueryBuilder.WHERE
 import io.quarkus.hibernate.orm.panache.kotlin.PanacheRepositoryBase
 import javax.enterprise.context.ApplicationScoped
 

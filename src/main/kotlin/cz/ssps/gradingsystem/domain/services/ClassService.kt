@@ -1,5 +1,6 @@
 package cz.ssps.gradingsystem.domain.services
 
+import cz.ssps.gradingsystem.domain.InvalidUserException
 import cz.ssps.gradingsystem.domain.UserNotFoundException
 import cz.ssps.gradingsystem.domain.repositories.ClassRepository
 import cz.ssps.gradingsystem.domain.repositories.UserRepository
