@@ -8,5 +8,4 @@ class UserNotFoundException : RuntimeException("User not found")
 class InvalidPasswordException : ForbiddenException("Invalid password")
 class InvalidUserException : ForbiddenException("User not permitted to perform this action")
 class UnregisteredEmailException : RuntimeException("Email is not registered to any user")
-
-class UserIsInGroup : java.lang.RuntimeException("User is already in that group")
+class UserIsInGroupException : java.lang.RuntimeException("User is already in that group")
