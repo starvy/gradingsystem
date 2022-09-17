@@ -11,6 +11,7 @@ import javax.annotation.security.RolesAllowed
 import javax.transaction.Transactional
 import javax.ws.rs.GET
 import javax.ws.rs.POST
+import javax.ws.rs.PUT
 import javax.ws.rs.Path
 import javax.ws.rs.PathParam
 import javax.ws.rs.core.Response
@@ -31,7 +32,7 @@ class TeacherGroupResource(
 
     /** Updates existing group */
     @Path("/group/update")
-    @POST
+    @PUT
     @RolesAllowed(TEACHER, ADMIN, SUPERADMIN)
     fun addUsersToGroup(updateRequest: GroupUpdateRequest): Response = ok(groupService.update(updateRequest)).build()
 
