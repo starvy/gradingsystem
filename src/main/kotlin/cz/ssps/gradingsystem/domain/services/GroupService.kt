@@ -16,7 +16,7 @@ class GroupService(
     private val userRepository: UserRepository,
 ) {
     /** A new group is created and users are added to it */
-    fun createAndAddUsers(groupRequest: NewGroupRequest) = groupRequest.run {
+    fun newGroup(groupRequest: NewGroupRequest) = groupRequest.run {
         val group = this.toEntity()
         userIds.forEach { id ->
             userRepository.findById(id).also {

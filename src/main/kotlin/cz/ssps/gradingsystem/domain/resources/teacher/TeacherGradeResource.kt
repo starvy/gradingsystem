@@ -29,10 +29,9 @@ class TeacherGradeResource(
         gradeService.add(securityContext.userPrincipal.name, newGradeRequest)
     ).status(201).build()
 
-    /*@Path("/grades")
+    @Path("/grades")
     @GET
     @RolesAllowed(RoleType.TEACHER, RoleType.ADMIN, RoleType.SUPERADMIN)
-    @Transactional
     fun list(
         @QueryParam("studentId") studentId: Long?,
         @QueryParam("classId") classId: Long?,
@@ -40,5 +39,5 @@ class TeacherGradeResource(
     ): Response = ok(
         gradeService.list(studentId, classId, securityContext?.userPrincipal?.name)
     )
-        .build()*/
+        .build()
 }

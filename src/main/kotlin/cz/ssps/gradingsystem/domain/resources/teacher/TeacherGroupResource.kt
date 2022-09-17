@@ -7,7 +7,6 @@ import cz.ssps.gradingsystem.domain.services.GroupService
 import cz.ssps.gradingsystem.infrastructure.security.RoleType.ADMIN
 import cz.ssps.gradingsystem.infrastructure.security.RoleType.SUPERADMIN
 import cz.ssps.gradingsystem.infrastructure.security.RoleType.TEACHER
-import java.net.URI
 import javax.annotation.security.RolesAllowed
 import javax.transaction.Transactional
 import javax.ws.rs.GET
@@ -27,14 +26,14 @@ class TeacherGroupResource(
     @Transactional
     @RolesAllowed(TEACHER, ADMIN, SUPERADMIN)
     fun newGroup(newGroupRequest: NewGroupRequest): Response = ok(
-        groupService.createAndAddUsers(newGroupRequest)
+        groupService.newGroup(newGroupRequest)
     ).status(201).build()
 
     /** Updates existing group */
     @Path("/group/update")
     @POST
     @RolesAllowed(TEACHER, ADMIN, SUPERADMIN)
-    fun addUsersToExistingGroup(updateRequest: GroupUpdateRequest): Response = ok(groupService.updateGroup(updateRequest)).build()
+    fun addUsersToGroup(updateRequest: GroupUpdateRequest): Response = ok(groupService.updateGroup(updateRequest)).build()
 
     /** Gets group by id */
     @Path("/group/{id}")

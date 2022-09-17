@@ -36,6 +36,17 @@ class GradeService(
         )
     }
 
+    fun list(
+        studentId: Long? = null,
+        classId: Long? = null,
+        username: String? = null
+    ): List<GradeResponse> {
+//        return gradeRepository.findBy(studentId, classId).map { GradeResponse.build(it) }
+        val grades = gradeRepository.findBy(studentId.toString(), classId)
+        println(grades)
+        return grades.map { GradeResponse.build(it) }
+    }
+
     fun get(username: String): List<GradeResponse> {
         return userRepository.findByUsername(username)!!.grades.map {
             GradeResponse.build(it)

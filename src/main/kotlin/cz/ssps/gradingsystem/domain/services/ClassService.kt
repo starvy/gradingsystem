@@ -1,5 +1,6 @@
 package cz.ssps.gradingsystem.domain.services
 
+import cz.ssps.gradingsystem.domain.UserNotFoundException
 import cz.ssps.gradingsystem.domain.repositories.ClassRepository
 import cz.ssps.gradingsystem.domain.repositories.UserRepository
 import cz.ssps.gradingsystem.domain.requests.NewClassRequest
@@ -31,6 +32,15 @@ class ClassService(
                 classRepository.persist(it)
             }
         )
+    }
+
+    fun delete(id: Long): Boolean = classRepository.deleteById(id)
+
+    fun isTeacherInClass(username: String, classId: Long): Boolean{
+        println(classId)
+        val user = userRepository.findByUsername(username) ?: throw UserNotFoundException()
+        val c = classRepository.findById(classId) ?: throw Exception("Class not found")
+        return userRepository.isTeacherInClass(user, c)
     }
 
     fun getMyClasses(username: String): List<cz.ssps.gradingsystem.domain.model.Class> {

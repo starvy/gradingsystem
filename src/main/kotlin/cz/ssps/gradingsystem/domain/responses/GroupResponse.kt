@@ -12,12 +12,16 @@ data class GroupResponse(
     val id: Long,
 
     @JsonProperty
+    val title: String,
+
+    @JsonProperty
     val names: List<String>,
 ) {
     companion object {
         @JvmStatic
         fun build(group: Group) = GroupResponse(
             id = group.id,
+            title = group.title,
             names = group.users.map { it.fullName }
         )
     }
