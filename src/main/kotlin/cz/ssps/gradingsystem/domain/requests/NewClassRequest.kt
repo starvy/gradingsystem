@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.annotation.JsonRootName
 import cz.ssps.gradingsystem.domain.model.Group
 
-@JsonRootName("group")
+@JsonRootName("class")
 data class NewClassRequest(
     @JsonProperty
     val title: String,
